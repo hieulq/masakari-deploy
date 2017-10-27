@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
-VAGRANTFILE_API_VERSION = "2"
+# VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -184,7 +184,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     controller.vm.hostname = "controller"
     controller.vm.network "private_network", ip: "192.168.50.10"
     controller.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "8192", "--cpus", "4", "--ioapic", "on"]
+      vb.customize ["modifyvm", :id, "--memory", "4096", "--cpus", "4", "--ioapic", "on"]
     end
     controller.vm.provision "chef_solo" do |chef|
       # run vagrant as
@@ -218,7 +218,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     compute1.vm.hostname = "compute1"
     compute1.vm.network "private_network", ip: "192.168.50.11"
     compute1.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "1", "--ioapic", "on"]
+      vb.customize ["modifyvm", :id, "--memory", "2048", "--cpus", "1", "--ioapic", "on"]
     end
     compute1.vm.provision "chef_solo" do |chef|
       chef.log_level = ENV.fetch("CHEF_LOG", "info").downcase.to_sym
@@ -244,7 +244,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     compute2.vm.hostname = "compute2"
     compute2.vm.network "private_network", ip: "192.168.50.12"
     compute2.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "1", "--ioapic", "on"]
+      vb.customize ["modifyvm", :id, "--memory", "2048", "--cpus", "1", "--ioapic", "on"]
     end
     compute2.vm.provision "chef_solo" do |chef|
       chef.log_level = ENV.fetch("CHEF_LOG", "info").downcase.to_sym
