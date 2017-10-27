@@ -1,7 +1,12 @@
 case node[:platform]
 when 'ubuntu', 'debian'
-  package ['build-essential', 'python-dev', 'python-pip', 'libmysqlclient-dev'] do
+  package ['build-essential', 'python-dev', 'python-pip', 'libmysqlclient-dev', 'libffi-dev', 'libssl-dev'] do
     action :install
+  end
+  execute "masakari setuptools" do
+    command "pip install --upgrade setuptools"
+    cwd "/home/stack/masakari/masakari-controller/"
+    user "root"
   end
   execute "masakari requirements" do
     command "pip install -r requirements.txt"

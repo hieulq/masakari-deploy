@@ -7,7 +7,7 @@ git "/home/stack/masakari" do
 end
 
 user "openstack" do
-  supports :manage_home => true
+  manage_home true
   comment 'required by masakari'
   home '/home/openstack'
   shell '/bin/bash'

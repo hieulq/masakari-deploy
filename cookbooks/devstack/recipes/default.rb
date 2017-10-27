@@ -5,7 +5,7 @@
 end
 
 user "stack" do
-  supports :manage_home => true
+  manage_home true
   comment 'devstack user'
   home '/home/stack'
   shell '/bin/bash'
@@ -23,7 +23,7 @@ git "/home/stack/devstack" do
   repository 'https://github.com/openstack-dev/devstack.git'
   ## use local repository
   #repository '/vagrant_openstack/devstack'
-  revision 'stable/mitaka'
+  revision 'stable/newton'
   user 'stack'
   group 'stack'
   action :checkout

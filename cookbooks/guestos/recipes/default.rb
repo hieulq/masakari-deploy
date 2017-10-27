@@ -17,7 +17,7 @@ end
 # to stop locale warning at login
 case node[:platform]
 when 'ubuntu', 'debian'
-  %w{language-pack-en language-pack-ja}.each do |pkg|
+  %w{language-pack-en}.each do |pkg|
     package pkg do
       action :install
     end
